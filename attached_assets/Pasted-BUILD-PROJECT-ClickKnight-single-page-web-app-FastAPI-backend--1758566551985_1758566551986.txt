@@ -1,0 +1,58 @@
+BUILD PROJECT: ClickKnight — single-page web app + FastAPI backend
+======================================================
+Create a full project in the directory `clickknight/` with the file structure and tech stack described below.
+
+PROJECT SUMMARY:
+- Single-page responsive site for SPS International School, Palwal
+- Name: ClickKnight
+- Purpose: paste a link, get verdict SAFE/SUSPICIOUS/DANGEROUS with reasons.
+- Target audience: Grade 11–12 students; make it educational, engaging, and easy to run locally.
+
+TECH STACK:
+- Frontend: React + TypeScript + Vite + Tailwind CSS + Framer Motion (optional)
+- Backend: FastAPI (Python) + Uvicorn + sqlite (SQLModel/SQLAlchemy)
+- Optional APIs: Google Safe Browsing, PhishTank
+- DevOps: Docker + docker-compose
+- Rate limiting: slowapi (FastAPI)
+- WhoIs: python-whois
+- Testing: pytest for backend, vitest or react-testing-library for frontend
+
+UI REQUIREMENTS (single page):
+1) Navbar (top, fixed): Left: SPS International School, Palwal (logo + text). Right: Overview | Our Team | Our School (anchor links).
+2) Banner: background campus image with translucent overlay. Show project title "ClickKnight" + subtitle + CTA.
+3) Link checker interactive block: paste input, Check Link button, Clear button, animated spinner during check, result card with color-coded verdict (green/yellow/red), reasons, details toggle and Report button.
+4) Overview/Why ClickKnight: explanation linking to nav Overview.
+5) Team section: centered mentor card, then 5 student cards with name & class.
+6) Our School: paragraph + image cards (3–4).
+7) Footer: email, phone, website, social links.
+
+BACKEND API:
+- POST /api/check {url, source} => returns scan_id, verdict, confidence, reasons, summary
+- GET /api/check/{scan_id}
+- POST /api/report {scan_id, user_verdict, notes}
+- Optional GET /api/history (demo)
+
+URL CHECK RULES (must implement):
+- Normalize URL, validate format
+- Lexical checks: length, '@' symbol, IP host, punycode (xn--), many hyphens/subdomains, suspicious TLDs
+- WHOIS: domain age < 30 days => suspicious
+- Blacklist: check Google Safe Browsing if key present; else check PhishTank if key; else rely on heuristics
+- Explainability: return reasons array for each triggered rule
+- Deep scan (optional): containerized headless chrome to inspect page, find login forms (async)
+
+SECURITY:
+- CORS configured
+- Rate limit 20 req/min per IP
+- sanitize inputs to avoid SSRF (no fetching arbitrary internal IPs)
+- store minimal data in SQLite; no user-identifying info
+
+DELIVERABLES:
+- Complete runnable repo with README, .env.example, Dockerfiles, docker-compose.yml, sample assets, seed data, tests, and Makefile scripts.
+- Keep code clear and commented for students.
+
+CONSTRAINTS:
+- Use TypeScript for frontend, Python for backend.
+- Do not include external premium packages.
+- If API keys are missing, fallback gracefully and document behavior.
+
+END.
