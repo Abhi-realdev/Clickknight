@@ -188,6 +188,34 @@
   .flip-card-back {
     transform: rotateY(180deg);
   }
+  
+  /* 3D Transform utilities for modern flip cards */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Enhanced hover effects for modern UI */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
 }
 
 @keyframes spin {
@@ -210,6 +238,11 @@
   50% { opacity: 1; transform: scale(1.05); }
   70% { transform: scale(0.9); }
   100% { transform: scale(1); }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 /* Custom scrollbar */
