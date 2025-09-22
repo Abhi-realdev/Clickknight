@@ -40,6 +40,11 @@ function sanitizeUrl(url: string): string {
   try {
     const parsed = new URL(url);
     
+    // Only allow HTTP and HTTPS protocols for security
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      throw new Error('Only HTTP and HTTPS URLs are allowed');
+    }
+    
     // Prevent SSRF by blocking internal IPs
     const hostname = parsed.hostname.toLowerCase();
     
