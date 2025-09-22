@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
-import { Shield, AlertTriangle, XCircle, CheckCircle, Flag, ChevronDown, X } from "lucide-react";
+import { Shield, AlertTriangle, XCircle, CheckCircle, Flag, ChevronDown, X, Sparkles, Search, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -146,57 +147,147 @@ export function UrlChecker() {
   };
 
   return (
-    <section id="checker" className="py-16 bg-secondary/30">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <Card className="shadow-xl">
-          <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold text-foreground mb-4">
-              Check Any URL
-            </CardTitle>
-            <p className="text-muted-foreground">
-              Paste a link below and we'll analyze it for safety
-            </p>
-          </CardHeader>
-          
-          <CardContent className="space-y-6">
-            {/* URL Input Form */}
-            <div className="space-y-2">
-              <Label htmlFor="url-input" className="text-sm font-medium text-foreground">
-                Website URL
-              </Label>
-              <div className="flex gap-3">
-                <Input
-                  id="url-input"
-                  type="url"
-                  placeholder="https://example.com"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  className="flex-1"
-                  data-testid="input-url"
-                />
-              </div>
-            </div>
+    <motion.section 
+      id="checker" 
+      className="py-20 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-accent/5" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(56,189,248,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(250,204,21,0.1),transparent_50%)]" />
+      
+      <div className="container mx-auto px-4 max-w-5xl relative">
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Card className="shadow-2xl border-2 border-primary/20 bg-card/95 backdrop-blur-sm scale-hover">
+            <CardHeader className="text-center pb-8">
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3, type: "spring" }}
+                viewport={{ once: true }}
+                className="mb-4"
+              >
+                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-secondary to-accent rounded-2xl flex items-center justify-center mb-6 neon-glow">
+                  <Search className="w-10 h-10 text-white" />
+                </div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <CardTitle className="text-4xl md:text-5xl font-black text-primary mb-4 tracking-tight">
+                  Check Any URL
+                </CardTitle>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Paste a suspicious link below and get instant AI-powered security analysis 
+                  with educational explanations
+                </p>
+              </motion.div>
+            </CardHeader>
+            
+            <CardContent className="space-y-8 px-8 pb-8">
+              {/* URL Input Form */}
+              <motion.div 
+                className="space-y-4"
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <Label htmlFor="url-input" className="text-lg font-semibold text-foreground flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-accent" />
+                  Website URL to Analyze
+                </Label>
+                <motion.div 
+                  className="relative"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Input
+                    id="url-input"
+                    type="url"
+                    placeholder="https://suspicious-website.com"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    className="text-lg py-4 px-6 border-2 border-primary/30 focus:border-secondary focus:ring-2 focus:ring-secondary/50 bg-background/50 backdrop-blur-sm transition-all duration-300 rounded-xl"
+                    data-testid="input-url"
+                    onFocus={(e) => {
+                      e.target.classList.add('neon-glow');
+                    }}
+                    onBlur={(e) => {
+                      e.target.classList.remove('neon-glow');
+                    }}
+                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 180, 360]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Sparkles className="w-5 h-5 text-accent/60" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </motion.div>
 
-            <div className="flex gap-3">
-              <Button
-                onClick={handleCheckUrl}
-                disabled={checkUrlMutation.isPending}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-                data-testid="button-check-url"
+              <motion.div 
+                className="flex gap-4"
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
               >
-                <Shield className="w-4 h-4 mr-2" />
-                Check Link
-              </Button>
-              <Button
-                onClick={handleClear}
-                variant="outline"
-                disabled={checkUrlMutation.isPending}
-                data-testid="button-clear"
-              >
-                <X className="w-4 h-4 mr-2" />
-                Clear
-              </Button>
-            </div>
+                <motion.div
+                  className="flex-1"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    onClick={handleCheckUrl}
+                    disabled={checkUrlMutation.isPending}
+                    className="w-full bg-gradient-to-r from-primary via-secondary to-primary hover:from-primary/90 hover:via-secondary/90 hover:to-primary/90 text-white py-4 text-lg font-bold rounded-xl shadow-lg neon-glow transition-all duration-300"
+                    data-testid="button-check-url"
+                  >
+                    <Shield className="w-5 h-5 mr-3" />
+                    {checkUrlMutation.isPending ? 'Analyzing...' : 'Analyze Link'}
+                    <Sparkles className="w-5 h-5 ml-3" />
+                  </Button>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    onClick={handleClear}
+                    variant="outline"
+                    disabled={checkUrlMutation.isPending}
+                    className="px-6 py-4 border-2 border-accent hover:bg-accent hover:text-accent-foreground font-semibold rounded-xl transition-all duration-300"
+                    data-testid="button-clear"
+                  >
+                    <X className="w-5 h-5 mr-2" />
+                    Clear
+                  </Button>
+                </motion.div>
+              </motion.div>
 
             {/* Loading State */}
             {checkUrlMutation.isPending && (
@@ -291,7 +382,8 @@ export function UrlChecker() {
             )}
           </CardContent>
         </Card>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
