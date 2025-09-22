@@ -1,0 +1,59 @@
+You are an expert full-stack web developer and UI/UX designer with 30+ years of experience. I want you to upgrade the UI of my existing one-page project website “ClickKnight”. The current website is dull, plain white, and lacks appeal.
+
+Goals for UI Upgrade:
+
+Color Palette:
+
+Use a modern and classy palette with navy blue (#1e3a8a), sky blue (#38bdf8), soft white (#f8fafc), and accent yellow (#facc15).
+
+Ensure contrast is maintained for readability.
+
+NavBar should have a gradient background (navy → sky blue).
+
+Animations & Graphics:
+
+Smooth scroll animations for each section.
+
+Fade-in / slide-up effect for cards (Team, School, Project details).
+
+A subtle hover animation on buttons and cards.
+
+Add a background subtle pattern/shape for banner (not plain white).
+
+Structure (keep same content as before):
+
+Navbar: Left → SPS International School, Palwal with logo. Right → Overview | Our Team | Our School. Nav links should change color on hover.
+
+Banner Section: Background with school campus photo + gradient overlay. Project name ClickKnight in bold modern typography with a glowing effect. Subtitle: “Your Guardian Against Suspicious Links”.
+
+Link Check Section:
+
+Interactive box where students can paste links.
+
+Use a modern input + button with neon-glow effect on hover.
+
+Why ClickKnight Section: Use card-style layout with icons (shield, knight, security lock) to make it engaging.
+
+Team Section: Mentor card at center, students in 5 cards below with hover animation.
+
+Our School Section: Use grid layout with school photos in interactive flip-cards.
+
+Footer: Dark navy background with school email, phone, website, and social media icons (hover animation).
+
+Typography:
+
+Use Google Fonts: Poppins (headings, bold & clean), Inter (body text).
+
+Tech Stack:
+
+Frontend: React + Tailwind CSS + Framer Motion (for animations).
+
+Keep it responsive (mobile + desktop friendly).
+
+Deliverables:
+
+Revamped one-page website with upgraded modern aesthetic UI.
+
+Include color palette, animations, responsive design, and interactive elements.
+
+Ensure the site feels professional, engaging, and aligned with school + student-friendly vibe.
