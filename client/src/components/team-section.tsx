@@ -4,48 +4,48 @@ import { Star, Award, Users, GraduationCap } from "lucide-react";
 
 export function TeamSection() {
   const mentor = {
-    name: "Mr. Rajesh Kumar",
-    role: "Project Mentor",
-    title: "Computer Science Teacher",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-    experience: "15+ years",
+    name: "Mr. Suraj Singh",
+    role: "Mentor",
+    title: "Computer Science Educator",
+    image: "/Suraj-Singh.png",
+    experience: "5+ years",
     specialization: "Cybersecurity & Software Engineering"
   };
 
   const students = [
     {
-      name: "Priya Sharma",
+      name: "Ghanisht",
       grade: "Grade 12",
       role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612045b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+      image: "/Ghanist.jpeg",
       color: "from-secondary to-secondary/80"
     },
     {
-      name: "Arjun Singh",
+      name: "Yogesh Kumar",
       grade: "Grade 11",
       role: "Security Researcher",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+      image: "/yogesh.jpeg",
       color: "from-accent to-accent/80"
     },
     {
-      name: "Sneha Gupta",
+      name: "Aarush Soni",
       grade: "Grade 12",
       role: "UI/UX Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+      image: "/Aarush soni.jpeg",
       color: "from-success to-success/80"
     },
     {
-      name: "Rohit Verma",
+      name: "Abhishek",
       grade: "Grade 11",
       role: "Backend Developer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+      image: "/Abhishek.jpg",
       color: "from-primary to-primary/80"
     },
     {
-      name: "Ananya Patel",
+      name: "Aditya",
       grade: "Grade 12",
       role: "Quality Assurance",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+      image: "/Adity.jpeg",
       color: "from-warning to-warning/80"
     }
   ];
@@ -121,7 +121,7 @@ export function TeamSection() {
                     <img 
                       src={mentor.image} 
                       alt={mentor.name}
-                      className="w-32 h-32 rounded-full object-cover border-4 border-accent shadow-xl"
+                      className="w-32 h-32 rounded-xl object-cover border-4 border-accent shadow-xl"
                     />
                     <div className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                       <Star className="w-4 h-4 text-accent-foreground" />
@@ -175,7 +175,7 @@ export function TeamSection() {
                     <img 
                       src={student.image} 
                       alt={student.name}
-                      className="w-24 h-24 rounded-full mx-auto object-cover border-2 border-primary/20 shadow-lg"
+                      className="w-24 h-24 rounded-xl mx-auto object-cover border-2 border-primary/20 shadow-lg"
                     />
                   </motion.div>
                   

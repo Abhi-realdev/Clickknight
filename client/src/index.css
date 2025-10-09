@@ -18,7 +18,7 @@
   --secondary-foreground: hsl(210, 40%, 98%);
   --muted: hsl(210, 30%, 95%);
   --muted-foreground: hsl(217, 25%, 50%);
-  --accent: hsl(45, 93%, 47%); /* Accent yellow (#facc15) */
+  --accent: hsl(295, 85%, 65%); /* Vibrant purple/magenta (#e879f9) */
   --accent-foreground: hsl(217, 79%, 32%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
@@ -31,7 +31,7 @@
   --warning-foreground: hsl(355, 25%, 97%);
   --chart-1: hsl(217, 79%, 32%);
   --chart-2: hsl(199, 89%, 48%);
-  --chart-3: hsl(45, 93%, 47%);
+  --chart-3: hsl(295, 85%, 65%);
   --chart-4: hsl(142, 71%, 45%);
   --chart-5: hsl(0, 84%, 60%);
   --sidebar: hsl(210, 30%, 95%);
@@ -52,7 +52,7 @@
   
   /* Custom gradients */
   --gradient-primary: linear-gradient(135deg, hsl(217, 79%, 32%) 0%, hsl(199, 89%, 48%) 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(56, 189, 248, 0.8) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(56, 189, 248, 0.3) 100%);
 }
 
 .dark {
@@ -128,10 +128,10 @@
                 0 0 20px hsl(199, 89%, 48%);
   }
   
-  .neon-glow-yellow {
-    box-shadow: 0 0 5px hsl(45, 93%, 47%),
-                0 0 10px hsl(45, 93%, 47%),
-                0 0 20px hsl(45, 93%, 47%);
+  .neon-glow-purple {
+    box-shadow: 0 0 5px hsl(295, 85%, 65%),
+                0 0 10px hsl(295, 85%, 65%),
+                0 0 20px hsl(295, 85%, 65%);
   }
 
   /* Animations */
