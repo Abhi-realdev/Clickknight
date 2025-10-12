@@ -2,6 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import http from "http";
+import os from "os";
 
 const app = express();
 app.use(express.json());
@@ -38,8 +39,7 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  const server = http.createServer(app);
-  await registerRoutes(app);
+  const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
@@ -55,12 +55,14 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ✅ Always use process.env.PORT (Render assigns one)
+  // Server configuration
   const PORT = parseInt(process.env.PORT || "5000", 10);
-  const HOST = "0.0.0.0"; // <-- critical change
+  const HOST = "0.0.0.0";
 
   server.listen(PORT, HOST, () => {
-    console.log(`✅ Server running on http://${HOST}:${PORT}`);
+    console.log(`✅ Server running on http://0.0.0.0:${PORT}`);
+    console.log(`🌐 Access your app at: http://localhost:${PORT}`);
+    console.log(`🔗 VS Code will show: http://0.0.0.0:${PORT}`);
   });
 
   // Optional safety logs
