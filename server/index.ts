@@ -1,12 +1,25 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from "cors";
 import http from "http";
 import os from "os";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+app.use(
+  cors({
+    origin: [
+      "https://clickknight-5.onrender.com",
+      "http://localhost:5000",
+    ],
+    methods: ["GET", "POST", "OPTIONS"],
+    credentials: true,
+  })
+);
 
 app.use((req, res, next) => {
   const start = Date.now();
